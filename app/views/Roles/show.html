@@ -1,0 +1,26 @@
+<div>
+  <div class="col-xs-5">
+    <div class="row">
+      <input type="text" class="form-control" ng-model="currentRole.name" placeholder="Name">
+    </div>
+    <div class="row">
+      <input disabled="disabled" type="text" class="form-control" ng-model="currentRole.UserId" placeholder="UserId">
+    </div>
+    <div class="row">
+      <input disabled="disabled" type="text" class="form-control" ng-model="currentRole.ProjectId" placeholder="ProjectId">
+    </div>
+    <div class="row">
+      <p>Id : {{currentRole.id}}</p>
+      <p>Crée le: {{currentRole.createdAt}}</p>
+      <p>Modifié le: {{currentRole.updatedAt}}</p>
+      <!--<p>Nom: {{currentRole.name}}</p>
+      <p>Prénom: {{currentRole.surname}}</p>
+      <p>E-mail: {{currentRole.email}}</p>
+      <p>Site: {{currentRole.website}}</p>
+      <p>Crée le: {{currentRole.createdAt}}</p>
+      <p>Modifié le: {{currentRole.updatedAt}}</p>-->
+      <a href="#/roles/"><button ng-click="deleteRole(currentRole.id)" class="btn btn-danger" >Supprimer</button></a> <a href="#/roles/"><btn ng-click="updateRole(currentRole)" type="submit" class="btn btn-success">Sauvegarder</btn></a> <a href="#/roles/" class="btn btn-info">Retour</a>
+    </div>
+  </div>
+</div>
+

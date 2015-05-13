@@ -1,0 +1,32 @@
+<div>
+  <div class="col-xs-5">
+    <div class="row">
+      <label class="sr-only" for="name">Titre</label>
+      <input type="text" class="form-control" id="name" value="{{currentProject.title}}" placeholder="Name">
+    </div>
+    <div class="row">
+      <label class="sr-only" for="surname">Description</label>
+      <input type="text" class="form-control" id="surname" value="{{currentProject.description}}" placeholder="Surname">
+    </div>
+    <div class="row">
+      <label class="sr-only" for="email">Année</label>
+      <input type="email" class="form-control" id="email" value="{{currentProject.year}}" placeholder="@">
+    </div>
+    <div class="row">
+      <p>Id : {{currentProject.id}}</p>
+      <p>Utilisateurs:<ol>
+      <li ng-repeat="i in getNumber(currentProjectRole.length) track by $index">{{currentProjectUser[$index].name}} en qualité de {{currentProjectUser[$index].title}}</li>
+    </ol></p>
+      <p>Crée le: {{currentProject.createdAt}}</p>
+      <p>Modifié le: {{currentProject.updatedAt}}</p>
+      <!--<p>Nom: {{currentProject.name}}</p>
+      <p>Prénom: {{currentProject.surname}}</p>
+      <p>E-mail: {{currentProject.email}}</p>
+      <p>Site: {{currentProject.website}}</p>
+      <p>Crée le: {{currentProject.createdAt}}</p>
+      <p>Modifié le: {{currentProject.updatedAt}}</p>-->
+      <a href="#/projects/"><button ng-click="deleteProj(currentProject.id)" class="btn btn-danger" >Supprimer</button></a> <a href="#/projects/" disabled="disabled" ng-click="updateProj(currentProject)" type="submit" class="btn btn-success">Sauvegarder</a> <a href="#/projects/" class="btn btn-info">Retour</a>
+    </div>
+  </div>
+</div>
+

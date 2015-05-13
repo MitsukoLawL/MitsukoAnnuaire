@@ -1,0 +1,39 @@
+<div>
+  <div class="col-xs-5">
+    <div class="row">
+      <label class="sr-only" for="name">Name</label>
+      <input type="text" class="form-control" id="name" ng-model="currentUser.name" placeholder="Name">
+    </div>
+    <div class="row">
+      <label class="sr-only" for="surname">Surname</label>
+      <input type="text" class="form-control" id="surname" ng-model="currentUser.surname" placeholder="Surname">
+    </div>
+    <div class="row">
+      <label class="sr-only" for="email">Email</label>
+      <input type="email" class="form-control" id="email" ng-model="currentUser.email" placeholder="@">
+    </div>
+    <div class="row">
+      <label class="sr-only" for="site">Site web</label>
+      <input type="text" class="form-control" id="site" ng-model="currentUser.website" placeholder="http://">
+    </div>
+    <div class="row">
+      <p>Projets:<ul>
+      <li ng-repeat="project in currentUserProject"><span ng-repeat="role in currentUserRoles | filter:{'ProjectId':project.id}">{{role.name == "" ? "undefined" : role.name}}</span> chez {{project.name == "" ? "undefined" : project.title}}</li>
+       </ul></p>
+      <btn class="btn btn-primary btn-block">Ajouter un role à un projet</btn>
+      <br/>
+      <p>Id : {{currentUser.id}}</p>
+      <p>Crée le: {{currentUser.createdAt}}</p>
+      <p>Modifié le: {{currentUser.updatedAt}}</p>
+
+      <!--<p>Nom: {{currentUser.name}}</p>
+      <p>Prénom: {{currentUser.surname}}</p>
+      <p>E-mail: {{currentUser.email}}</p>
+      <p>Site: {{currentUser.website}}</p>
+      <p>Crée le: {{currentUser.createdAt}}</p>
+      <p>Modifié le: {{currentUser.updatedAt}}</p>-->
+      <a href="#/users/"><button ng-click="deleteUser(currentUser.id)" class="btn btn-danger" >Supprimer</button></a> <a href="#/users/"><btn type="submit" ng-click="updateUser(currentUser)" class="btn btn-success">Sauvegarder</btn></a> <a href="#/users/" class="btn btn-info">Retour</a>
+    </div>
+  </div>
+</div>
+
