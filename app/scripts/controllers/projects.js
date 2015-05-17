@@ -15,9 +15,13 @@ angular.module('pooIhmExemplesApp')
       'Karma'
     ];
 
-      $scope.getNumber = function(num) {
-        return new Array(num);
+    $scope.showAdd = function() {
+      if ($scope.show) {
+        $scope.show=null;
+      } else {
+        $scope.show =1;
       }
+    };
 
 
     this.setShowP = function(user) {
@@ -43,6 +47,11 @@ angular.module('pooIhmExemplesApp')
         $scope.projects = data.data;
 
       });
+      $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users')
+          .success(function(data) {
+            $scope.users = data.data;
+
+          });
 
     if($routeParams.userId) {
       $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Projects/' + $routeParams.userId)
@@ -77,4 +86,8 @@ angular.module('pooIhmExemplesApp')
       $scope.updateProj = function(newUser){
         $http.put('http://poo-ihm-2015-rest.herokuapp.com/api/Projects/'+newUser.id, newUser);
       }
+
+      $scope.addRole = function(newRole){
+        $http.post('http://poo-ihm-2015-rest.herokuapp.com/api/Roles/', newRole);
+      };
   }]);

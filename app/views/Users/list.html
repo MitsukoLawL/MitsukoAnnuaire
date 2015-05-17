@@ -11,7 +11,7 @@
   </div>
   <br/>
 
-  <div ng-controller="UsersCtrl as us">
+  <div ng-controller="UsersCtrl">
   <form class="form-inline">
     <div class="form-group">
       <input ng-model="user.name" type="text" size="10" class="form-control" id="name" placeholder="Nom">
@@ -25,13 +25,13 @@
     <div class="form-group">
       <input ng-model="user.website" type="text" size="10" class="form-control" id="website" placeholder="http://">
     </div>
-    <button ng-click="us.addUser(user); user=null;" class="btn btn-default">Ajouter</button>
+    <button ng-click="addUser(user); user=null;" class="btn btn-default">Ajouter</button>
   </form>
 </div>
 
-<!--</div>-->
+
 <h3>Liste des utilisateurs:</h3>
-<!--<div ng-controller="UsersCtrl as us">-->
+<div ng-controller="UsersCtrl as us">
   <ul class="nav nav-pills nav-stacked col-xs-7">
     <li ng-repeat="user in users | filter:user" ng-class="{ active:us.isSet(user) }"><a ng-click="us.setShow(user)" > {{user.name}}, {{user.surname}}</a></li>
   </ul>
@@ -43,7 +43,7 @@
       <p>E-mail: {{showUser.email}}</p>
       <p>Site: {{showUser.website}}</p>
       <p>Projets:<ol>
-      <li ng-repeat="project in showUserProject"><span ng-repeat="role in showUserRole | filter:{'ProjectId':project.id}">{{role.name == "" ? "undefined" : role.name}}</span> chez {{projet.title == "" ? "undefined" : project.title}}</li>
+      <li ng-repeat="project in showUserProject"><span ng-repeat="role in showUserRole | filter:{'ProjectId':project.id}">{{role.name == null ? "undefined" : role.name}}</span> chez {{projet.title == null ? "undefined" : project.title}}</li>
        </ol></p>
       <p>Id : {{showUser.id}}</p>
       <p>Crée le: {{showUser.createdAt}}</p>
@@ -51,4 +51,5 @@
       <a href="#/users/{{showUser.id}}" class="btn btn-success">Mettre à jour</a>
     </div>
   </div>
+</div>
 </div>

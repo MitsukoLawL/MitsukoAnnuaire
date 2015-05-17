@@ -17,11 +17,11 @@
         <input ng-model="role.name" type="text" size="10" class="form-control" id="name" placeholder="Role">
       </div>
 
-        UserId :
+        User :
         <select class="form-control" ng-model="role.UserId" ng-options="user.id as user.name for user in users">
         <!--<option ng-repeat="user in users" value="user.id">{{user.name}}</option>-->
       </select>
-      ProjectId :
+      Project :
       <select class="form-control" ng-model="role.ProjectId" ng-options="project.id as project.title for project in projects">
         <!--<option ng-repeat="project in projects">{{project.id}}</option>-->
       </select>

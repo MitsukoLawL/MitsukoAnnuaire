@@ -15,13 +15,19 @@ angular.module('pooIhmExemplesApp')
       'Karma'
     ];
 
-    $scope.noValue = "undefined";
-
       /**
       $scope.getNumber = function(num) {
         return new Array(num);
       }
     **/
+
+      $scope.showAdd = function() {
+        if ($scope.show) {
+          $scope.show=null;
+        } else {
+          $scope.show =1;
+        }
+      };
 
     this.setShow = function(user) {
       $scope.showUser = user;
@@ -57,6 +63,12 @@ angular.module('pooIhmExemplesApp')
         $scope.users = data.data;
 
       });
+
+    /** On recupere les projets pour avoir les id dans la combobox **/
+    $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Projects')
+        .success(function(data) {
+          $scope.projects = data.data;
+        });
 
     if($routeParams.userId) {
       $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + $routeParams.userId)
@@ -101,4 +113,19 @@ angular.module('pooIhmExemplesApp')
       $http.put('http://poo-ihm-2015-rest.herokuapp.com/api/Users/'+newUser.id, newUser)
     };
 
+
+    $scope.addRole = function(newRole){
+      $http.post('http://poo-ihm-2015-rest.herokuapp.com/api/Roles/', newRole)
+          .success(function(data){
+            if($routeParams.userId) {
+              $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + $routeParams.userId)
+                  .success(function(data) {
+                    if (data.status == "success") {
+                      $scope.currentUser = data.data;
+                    }
+                  });
+            }
+
+          });
+    };
   }]);

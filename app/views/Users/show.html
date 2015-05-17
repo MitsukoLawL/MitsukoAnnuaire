@@ -1,4 +1,4 @@
-<div>
+<div class="row">
   <div class="col-xs-5">
     <div class="row">
       <label class="sr-only" for="name">Name</label>
@@ -18,10 +18,16 @@
     </div>
     <div class="row">
       <p>Projets:<ul>
-      <li ng-repeat="project in currentUserProject"><span ng-repeat="role in currentUserRoles | filter:{'ProjectId':project.id}">{{role.name == "" ? "undefined" : role.name}}</span> chez {{project.name == "" ? "undefined" : project.title}}</li>
+      <li ng-repeat="project in currentUserProject"><span ng-repeat="role in currentUserRoles | filter:{'ProjectId':project.id}">{{role.name == null ? "undefined" : role.name}}</span> chez {{project.title == null ? "undefined" : project.title}}</li>
        </ul></p>
-      <btn class="btn btn-primary btn-block">Ajouter un role à un projet</btn>
-      <br/>
+
+    </div>
+    </div>
+
+    </div>
+  <div class="row">
+    <div class="col-xs-5">
+      <btn ng-click="showAdd();" class="btn btn-primary btn-block">Ajouter un role</btn>
       <p>Id : {{currentUser.id}}</p>
       <p>Crée le: {{currentUser.createdAt}}</p>
       <p>Modifié le: {{currentUser.updatedAt}}</p>
@@ -32,8 +38,24 @@
       <p>Site: {{currentUser.website}}</p>
       <p>Crée le: {{currentUser.createdAt}}</p>
       <p>Modifié le: {{currentUser.updatedAt}}</p>-->
-      <a href="#/users/"><button ng-click="deleteUser(currentUser.id)" class="btn btn-danger" >Supprimer</button></a> <a href="#/users/"><btn type="submit" ng-click="updateUser(currentUser)" class="btn btn-success">Sauvegarder</btn></a> <a href="#/users/" class="btn btn-info">Retour</a>
-    </div>
+      </div>
+  <div ng-show="show" class="col-xs-7">
+      <form class="form-inline">
+        <div class="form-group">
+          <input ng-model="role.name" type="text" size="10" class="form-control" placeholder="Role">
+        </div>
+        </select>
+        chez :
+        <select class="form-control" ng-model="role.ProjectId" ng-options="project.id as project.title for project in projects">
+          <!--<option ng-repeat="project in projects">{{project.id}}</option>-->
+        </select>
+        <button ng-click="role.UserId = currentUser.id; addRole(role); role=null;" class="btn btn-default">Ajouter</button>
+      </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <a href="#/users/"><button ng-click="deleteUser(currentUser.id)" class="btn btn-danger" >Supprimer</button></a> <a href="#/users/"><btn type="submit" ng-click="updateUser(currentUser)" class="btn btn-success">Sauvegarder</btn></a> <a href="#/users/" class="btn btn-info">Retour</a>
   </div>
 </div>
 
