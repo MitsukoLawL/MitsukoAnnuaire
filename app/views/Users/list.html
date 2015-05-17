@@ -43,7 +43,7 @@
       <p>E-mail: {{showUser.email}}</p>
       <p>Site: {{showUser.website}}</p>
       <p>Projets:<ol>
-      <li ng-repeat="project in showUserProject"><span ng-repeat="role in showUserRole | filter:{'ProjectId':project.id}">{{role.name == null ? "undefined" : role.name}}</span> chez {{projet.title == null ? "undefined" : project.title}}</li>
+      <li ng-repeat="project in showUserProject"><span ng-repeat="role in showUserRole | filter:{'ProjectId':project.id}">{{role.name == null ? "undefined" : role.name}}</span> chez {{project.title == null ? "undefined" : project.title}}</li>
        </ol></p>
       <p>Id : {{showUser.id}}</p>
       <p>Crée le: {{showUser.createdAt}}</p>
