@@ -99,7 +99,7 @@ angular.module('pooIhmExemplesApp')
     $scope.deleteUser = function(id){
           $http.delete('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + id);
     };
-    this.addUser = function(newUser){
+    $scope.addUser = function(newUser){
       $http.post('http://poo-ihm-2015-rest.herokuapp.com/api/Users/', newUser)
         .success(function(data){
           $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users')
