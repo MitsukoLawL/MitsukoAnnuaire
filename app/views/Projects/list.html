@@ -40,8 +40,8 @@
       <p>Description: {{showProject.description}}</p>
       <p>Année: {{showProject.year}}</p>
       <p>Utilisateurs:<ol>
-          <li ng-repeat="i in getNumber(showProjectRole.length) track by $index">{{showProjectUser[$index].name}} en qualité de {{showProjectRole[$index].name}}</li>
-        </ol></p>
+        <li ng-repeat="user in showProjectUser"><span ng-repeat="role in showProjectRole | filter:{'UserId':user.id}">{{role.name == null ? "undefined" : role.name}}</span> : {{user.name == null ? "undefined" : user.name}}</li>
+    </ol></p>
       <p>Id : {{showProject.id}}</p>
       <p>Crée le: {{showProject.createdAt}}</p>
       <p>Modifié le: {{showProject.updatedAt}}</p>
